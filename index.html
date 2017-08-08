@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Notes</title>
+	<title>GacomRecode</title>
 	<script src="js/react.js"></script>
 	<script src="js/react-dom.js"></script>
 	<script src="js/browser.min.js"></script>
-	<script src="js/threads.js"></script>
 </head>
 <body>
 	<section id="react-mount">
@@ -18,11 +17,22 @@
 				return (
 					<div>
 						Home Page
+						<MainHeader />
 					</div>
 				)
 			}
 		});
 
+		var MainHeader = React.createClass({
+			render: function(){
+				return (
+					<div>
+						Main Header
+					</div>
+				)
+			}
+		});
+ 
 		ReactDOM.render(<HomePage />, document.getElementById('react-mount'));
 	</script>
 </body>
