@@ -66,18 +66,9 @@
 				this.setState({directories: apidata_directories.directories});
 			},
 
-			// getMainDirectories: function(){
-			// 	let dir = this.state.directories;
-			// 	return this.state.directories.map(function(item, index){
-			// 		// if(true){
-			// 			let ret = <li>{{item.name}}</li>;
-			// 		// }
-			// 	});
-			// },
-
 			getDirectories: function(indexStart, indexEnd){
 				let dir = this.state.directoryIds;
-				// console.log(dir.slice(0,4));
+				
 				return this.state.directories.map(function(item, index){
 
 					if(dir.slice(indexStart,indexEnd).indexOf(item.id) !== -1)
