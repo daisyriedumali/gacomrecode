@@ -2,9 +2,11 @@
 <html>
 <head>
 	<title>GacomRecode</title>
+	<script src="js/apidata.js"></script>
 	<script src="js/react.js"></script>
 	<script src="js/react-dom.js"></script>
 	<script src="js/browser.min.js"></script>
+	<script src="js/jquery-2.1.4.js"></script>
 </head>
 <body>
 	<section id="react-mount">
@@ -35,7 +37,7 @@
 								<li><a href="#">Choose an experience</a></li>
 								<li><a href="#">How it works</a></li>
 								<li><a href="#">Help me</a></li>
-								<li><a href="#">Sign in</a></li>
+								<li><SignIn /></li>
 							</ul>
 						</div>
 						<div>
@@ -47,28 +49,75 @@
 		});
 
 		var Directories = React.createClass({
+			getInitialState: function(){
+				return {
+					directoryIds: [6,2,4,3,11,12,9,7,8,5],
+					directories: []
+				}
+			},
+
+			componentWillMount: function(){
+				this.fetchDirectories();
+			},
+
+			fetchDirectories: function() {
+				// fetch via ajax 
+				// url: https://api.goabroad.dev/directories?id=6,2,4,3,11,12,9,7,8,5
+				this.setState({directories: apidata_directories.directories});
+			},
+
+			// getMainDirectories: function(){
+			// 	let dir = this.state.directories;
+			// 	return this.state.directories.map(function(item, index){
+			// 		// if(true){
+			// 			let ret = <li>{{item.name}}</li>;
+			// 		// }
+			// 	});
+			// },
+
+			getDirectories: function(indexStart, indexEnd){
+				let dir = this.state.directoryIds;
+				// console.log(dir.slice(0,4));
+				return this.state.directories.map(function(item, index){
+
+					if(dir.slice(indexStart,indexEnd).indexOf(item.id) !== -1)
+						return <li key={index}><a href="#">{item.name}</a></li>;
+				});
+			},
+
 			render: function(){
+				
 				return (
 					<section className="directories-section">
 						<ul className="first-directories">
-							<li><a href="#">Study Abroad</a></li>
-							<li><a href="#">Volunteer Abroad</a></li>
-							<li><a href="#">Intern Abroad</a></li>
-							<li><a href="#">Teach Abroad</a></li>
-							<li><a href="#">TEFL</a></li>
+							{this.getDirectories(0, 4)}
 						</ul>
 						<ul className="second-directories">
-							<li><a href="#">Degrees Abroad</a></li>
-							<li><a href="#">HS Programs Abroad</a></li>
-							<li><a href="#">Language Schools</a></li>
-							<li><a href="#">Adventure Travel</a></li>
-							<li><a href="#">Jobs Abroad</a></li>
+							{this.getDirectories(5, 9)}
 						</ul>
 					</section>
 				)
 			}
 		});
- 
+ 	
+ 		var SignIn = React.createClass({
+ 			auth: function(){
+
+ 			},
+ 			
+ 			validateForm: function(){
+
+ 			},
+
+ 			render: function(){
+ 				return (
+ 					<a href="#">
+ 						Sign In
+ 					</a>
+ 				)
+ 			}
+ 		})
+
 		ReactDOM.render(<HomePage />, document.getElementById('react-mount'));
 	</script>
 </body>
