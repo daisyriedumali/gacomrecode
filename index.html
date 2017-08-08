@@ -16,8 +16,8 @@
 			render: function(){
 				return (
 					<div>
-						Home Page
 						<MainHeader />
+						<Directories />
 					</div>
 				)
 			}
@@ -26,9 +26,45 @@
 		var MainHeader = React.createClass({
 			render: function(){
 				return (
-					<div>
-						Main Header
-					</div>
+					<section className="main-header-section">
+						<div className="main-logo">
+							<img src="https://www.goabroad.com/webroot/app/images/galogo.png.pagespeed.ce.-PXT91lYnX.png" />
+						</div>
+						<div className="right-nav">
+							<ul>
+								<li><a href="#">Choose an experience</a></li>
+								<li><a href="#">How it works</a></li>
+								<li><a href="#">Help me</a></li>
+								<li><a href="#">Sign in</a></li>
+							</ul>
+						</div>
+						<div>
+							<img src=""/>
+						</div>
+					</section>
+				)
+			}
+		});
+
+		var Directories = React.createClass({
+			render: function(){
+				return (
+					<section className="directories-section">
+						<ul className="first-directories">
+							<li><a href="#">Study Abroad</a></li>
+							<li><a href="#">Volunteer Abroad</a></li>
+							<li><a href="#">Intern Abroad</a></li>
+							<li><a href="#">Teach Abroad</a></li>
+							<li><a href="#">TEFL</a></li>
+						</ul>
+						<ul className="second-directories">
+							<li><a href="#">Degrees Abroad</a></li>
+							<li><a href="#">HS Programs Abroad</a></li>
+							<li><a href="#">Language Schools</a></li>
+							<li><a href="#">Adventure Travel</a></li>
+							<li><a href="#">Jobs Abroad</a></li>
+						</ul>
+					</section>
 				)
 			}
 		});
